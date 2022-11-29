@@ -14,21 +14,23 @@ library(plotKML)
 #### Using loops with each step for more image input allowance
 
   ## Create file paths as objects
-  
+  ##This needs to be setVidDir function
+
   video_path <- "I:/ResearchProject/Videos/GH010006.MP4"
   video_image_destination <- "I:/ResearchProject/Videos/images/video_images"
   yolo_weights <- "I:/ResearchProject/yolov3.weights"
   image_folder <- "I:/ResearchProject/Videos/images/image_folder"
   object_detected_images <- "I:/ResearchProject/Videos/images/object_detected_images"
   gpx_path <- "I:/ResearchProject/gpx.fmt"
-  
+
 ### Video to image conversion
-  
+  ##separate function?
+
 test_vid_images <- av_video_images(video = video_path,
                                    destdir = video_image_destination,
                                    format = "jpg",
                                    fps = 1)
-  
+
 
 ## set up yolo
 test_yolo <- yolo3(
@@ -92,7 +94,7 @@ for (i in seq_along(obj_preds)) {
     print(cond)
     val <<- NA
     print("error on ", i)
-    
+
     },
   finally = {
     print(paste0("complete ", i))
@@ -106,27 +108,27 @@ names = img_paths %>% basename %>% str_sub(1, -5) %>% paste0("_boxes.jpg")
 
 ## plotting the boxes and saving the new images to a folder (have to restart R session after in order to view images in folder)
 for (i in seq_along(pred_boxes)){
-  
+
   print(i)
-  
+
   if (is.na(pred_boxes[i])) {
     next
   }
-  
+
   else {
     boxed_image_paths <- file.path(object_detected_images, paste(names[i], sep = ""))
-    
+
     jpeg(file = boxed_image_paths)
-    
+
     plot_boxes(
       images_paths = img_paths[[i]], # Images paths
       boxes = pred_boxes[[i]], # Bounding boxes
       correct_hw = TRUE, # Should height and width of bounding boxes be corrected to image height and width
       labels = coco_labels, # Class labels
     )
-    
+
     dev.off()
-  }  
+  }
 }
 
 
@@ -151,7 +153,7 @@ df_na <- data.frame(matrix(rep(NA, length(all_object_names)), nrow=1)) %>%
 
 ## i can't think of how to get around a loop here
 for (i in 1:length(pred_boxes)) {
-  
+
   ## get counts of every object
   row_tmp <- pred_boxes[[i]] %>%
     map("label") %>%
@@ -161,12 +163,12 @@ for (i in 1:length(pred_boxes)) {
     set_colnames(.[1,]) %>%
     data.frame() %>%
     slice(-1)
-  
+
   ## get counts of every object with zeroes in place
   row <- rbindlist(list(df_na, row_tmp), fill = TRUE) %>%
     slice(-1) %>%
     mutate_all(~replace(., is.na(.), 0))
-  
+
   ## set row values to counts
   df[i,] <- row
 }
