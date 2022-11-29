@@ -1,11 +1,18 @@
 Package: videogeolocationr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Recognition and Geolocation of Objects from Video using R
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Tony", "DeRosa", email = "a.derosa.1138@gmail.com",
+                  role = c("aut", "cre"))
+Maintainer: <a.derosa.1138@gmail.com>
+Description: A package for processing geotagged video into an R dataframe containing object counts tied to location at a specified time interval.
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Depends:
+    R (>= 3.1), keras, tensorflow, plyr, tidyverse, abind, dplyr, tidyr, pryr, purrr, magrittr, data.table, av, plotKML
+Imports:
+
+
+
+
