@@ -1,0 +1,1 @@
+I:\ResearchProject\exiftool-12.44\exiftool.exe -p "I:\ResearchProject\gpx.fmt" -ee "I:\ResearchProject\Videos\GH010006.MP4" > "I:\ResearchProject\Videos\GH010006.gpx"
