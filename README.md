@@ -1,8 +1,8 @@
-# video_geolocation_r
+# videogeolocationr
  Recognition and geolocation of objects from video using r
 
-A pair of scripts for processing geotagged video into an R dataframe containing object counts tied to location at a specified time interval. 
-Scripts use ExifTool and YOLOv3 for obtaining geolocation data and object recognition respectively. 
+A package for processing geotagged video into an R dataframe containing object counts tied to location at a specified time interval. 
+ExifTool and YOLOv3 are used for obtaining geolocation data and object recognition respectively. 
 
 ##Dependencies
 
@@ -31,9 +31,9 @@ https://cran.r-project.org/web/packages/tensorflow/index.html
 
 #Other
 ExifTool -> https://exiftool.org/
-#Exiftool must be installed to machine manually
+#Exiftool currently must be installed to machine manually and operated via shell to produce .gpx file
 yolov3.weights -> https://pjreddie.com/media/files/yolov3.weights
-#incorporating these to package at later time
+#incorporating these to package at later time? too large for github, must be automatically downloaded from source
 gpx.fmt -> https://github.com/exiftool/exiftool/blob/master/fmt_files/gpx.fmt
-#incorporating into package at later time
+#file is in data-raw
 
