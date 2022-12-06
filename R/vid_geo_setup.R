@@ -7,22 +7,22 @@
 #' setup("C:/videos", video.mp4);
 #' @export
 
-vid_geo_setup <- function(video_location, video_name){
+vid_geo_setup <- function(video_location){
     setwd(video_location);
     dir.create("../output")
     dir.create("../output/videoframes")
     dir.create("../output/boxedimages")
-    video_path <- "../video_name"
-    video_image_destination <- "../output/videoframes"
-    download.file(
-      "https://pjreddie.com/media/files/yolov3.weights",
-      "../output"
-    )
-    yolo_weights <- "../output/yolov3.weights"
-    boxed_images <- "../output/boxedimages"
-    download.file(
-      "https://raw.githubusercontent.com/exiftool/exiftool/master/fmt_files/gpx.fmt",
-      "../output"
-    )
-    gpx_path <- "../output/gpx.fmt"
+    video_path <<- "../"
+    video_image_destination <<- "../output/videoframes"
+#    download.file(
+#      "https://pjreddie.com/media/files/yolov3.weights",
+#      "../output"
+#    )
+    yolo_weights <<- "../output/yolov3.weights"
+    boxed_images <<- "../output/boxedimages"
+#    download.file(
+#      "https://raw.githubusercontent.com/exiftool/exiftool/master/fmt_files/gpx.fmt",
+#      "../output"
+#    )
+    gpx_path <<- "../output/gpx.fmt"
 }
