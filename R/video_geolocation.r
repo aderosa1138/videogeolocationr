@@ -19,8 +19,7 @@ library(plotKML)
   video_path <- "I:/ResearchProject/Videos/GH010006.MP4"
   video_image_destination <- "I:/ResearchProject/Videos/images/video_images"
   yolo_weights <- "I:/ResearchProject/yolov3.weights"
-  image_folder <- "I:/ResearchProject/Videos/images/image_folder"
-  object_detected_images <- "I:/ResearchProject/Videos/images/object_detected_images"
+  boxed_images <- "I:/ResearchProject/Videos/images/boxed_images"
   gpx_path <- "I:/ResearchProject/gpx.fmt"
 
 ### Video to image conversion
@@ -116,7 +115,7 @@ for (i in seq_along(pred_boxes)){
   }
 
   else {
-    boxed_image_paths <- file.path(object_detected_images, paste(names[i], sep = ""))
+    boxed_image_paths <- file.path(boxed_images, paste(names[i], sep = ""))
 
     jpeg(file = boxed_image_paths)
 
