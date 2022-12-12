@@ -1,15 +1,15 @@
-library(platypus)
-library(plyr)
-library(tidyverse)
-library(abind)
-library(dplyr)
-library(tidyr)
-library(pryr)
-library(purrr)
-library(magrittr)
-library(data.table)
-library(av)
-library(plotKML)
+# library(platypus)
+# library(plyr)
+# library(tidyverse)
+# library(abind)
+# library(dplyr)
+# library(tidyr)
+# library(pryr)
+# library(purrr)
+# library(magrittr)
+# library(data.table)
+# library(av)
+# library(plotKML)
 
 #### Using loops with each step for more image input allowance
 
@@ -138,56 +138,56 @@ library(plotKML)
 # ## do not go further until fixed to allow for NA's
 
 ## use map to extract object from list by index or by name
-all_object_names <- pred_boxes %>%
-  map(1) %>%
-  map("label") %>%
-  unlist() %>%
-  unique()
-
-## initialize empty data frame here
-df <- data.frame(matrix(NA,
-                        nrow = 1,
-                        ncol = length(all_object_names))) %>%
-  set_colnames(c(all_object_names))
-
-## get single row df with NA for the sake of joining
-df_na <- data.frame(matrix(rep(NA, length(all_object_names)), nrow=1)) %>%
-  set_colnames(all_object_names)
-
-## i can't think of how to get around a loop here
-for (i in 1:length(pred_boxes)) {
-
-  ## get counts of every object
-  row_tmp <- pred_boxes[[i]] %>%
-    map("label") %>%
-    unlist() %>%
-    plyr::count() %>%
-    t() %>%
-    set_colnames(.[1,]) %>%
-    data.frame() %>%
-    slice(-1)
-
-  ## get counts of every object with zeroes in place
-  row <- rbindlist(list(df_na, row_tmp), fill = TRUE) %>%
-    slice(-1) %>%
-    mutate_all(~replace(., is.na(.), 0))
-
-  ## set row values to counts
-  df[i,] <- row
-}
-
-
-
-###move to different function?
-
-
-df
-##read in the gpx file
-points <- readGPX(gpx_path, metadata = TRUE, tracks = TRUE)
-gpx <- points$tracks
-##merge
-merged_df <- merge(df, gpx, by.x = 0, by.y = 0)
-merged_df
+# all_object_names <- pred_boxes %>%
+#   map(1) %>%
+#   map("label") %>%
+#   unlist() %>%
+#   unique()
+#
+# ## initialize empty data frame here
+# df <- data.frame(matrix(NA,
+#                         nrow = 1,
+#                         ncol = length(all_object_names))) %>%
+#   set_colnames(c(all_object_names))
+#
+# ## get single row df with NA for the sake of joining
+# df_na <- data.frame(matrix(rep(NA, length(all_object_names)), nrow=1)) %>%
+#   set_colnames(all_object_names)
+#
+# ## i can't think of how to get around a loop here
+# for (i in 1:length(pred_boxes)) {
+#
+#   ## get counts of every object
+#   row_tmp <- pred_boxes[[i]] %>%
+#     map("label") %>%
+#     unlist() %>%
+#     plyr::count() %>%
+#     t() %>%
+#     set_colnames(.[1,]) %>%
+#     data.frame() %>%
+#     slice(-1)
+#
+#   ## get counts of every object with zeroes in place
+#   row <- rbindlist(list(df_na, row_tmp), fill = TRUE) %>%
+#     slice(-1) %>%
+#     mutate_all(~replace(., is.na(.), 0))
+#
+#   ## set row values to counts
+#   df[i,] <- row
+# }
+#
+#
+#
+# ###move to different function?
+#
+#
+# df
+# ##read in the gpx file
+# points <- readGPX(gpx_path, metadata = TRUE, tracks = TRUE)
+# gpx <- points$tracks
+# ##merge
+# merged_df <- merge(df, gpx, by.x = 0, by.y = 0)
+# merged_df
 
 
 

@@ -107,4 +107,3 @@ for (i in seq_along(pred_boxes)){
 }
 }
 
-## do not go further until fixed to allow for NA's

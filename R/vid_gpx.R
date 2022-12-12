@@ -6,4 +6,3 @@
 #' vid_gpx("C:/videos/video.mp4")
 #' @export
 
-
