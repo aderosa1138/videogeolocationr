@@ -4,7 +4,7 @@
 
 # videogeolocationr
 
-Recognition and geolocation of objects from video using R
+Recognition and geolocation of objects from video using R.
 
 A package for processing geotagged video into an R dataframe containing object counts tied to location at a specified time interval. ExifTool and YOLOv3 are used for obtaining geolocation data and object recognition respectively.
 
