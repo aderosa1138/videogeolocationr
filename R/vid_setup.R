@@ -21,7 +21,7 @@ vid_setup <- function(video_location){
 #      "../output"
 #    )
     yolo_weights <<- paste(dirname(video_location),"/yolov3.weights",sep="")
-    boxed_images <<- boxed_images_dir
+    boxed_images <<- boxedimages_dir
 }
 
 ##currently needs weights and fmt files manually placed in same directory as target video

@@ -10,6 +10,6 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Depends:
-    R (>= 3.1), keras, tensorflow, plyr, tidyverse, abind, dplyr, tidyr, pryr, purrr, magrittr, data.table, av, plotKML
+    R (>= 3.1), keras, tensorflow, platypus, plyr, tidyverse, abind, dplyr, tidyr, pryr, purrr, magrittr, data.table, av, plotKML
 Imports:
 RoxygenNote: 7.2.2
