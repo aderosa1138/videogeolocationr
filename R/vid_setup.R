@@ -22,7 +22,6 @@ vid_setup <- function(video_location){
 #    )
     yolo_weights <<- paste(dirname(video_location),"/yolov3.weights",sep="")
     boxed_images <<- boxed_images_dir
-    gpx_path <<- paste(dirname(video_location), "/gpx.fmt",sep="")
 }
 
 ##currently needs weights and fmt files manually placed in same directory as target video
