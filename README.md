@@ -59,7 +59,7 @@ The following is the full order of operations to obtain a dataframe containing o
 7.  Direct videogeolocationr to the .gpx file with vid_gpx():
 
     ```{r}
-    vid_gpx("C\data\example.gpx")
+    vid_gpx("C:\data\example.gpx")
     ```
 
 8.  Extract frames from the video with vid_split(), specifying the frame rate of extraction, in this case, one frame per second:
