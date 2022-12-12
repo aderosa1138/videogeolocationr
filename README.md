@@ -13,24 +13,33 @@ object counts tied to location at a specified time interval. ExifTool
 and YOLOv3 are used for obtaining geolocation data and object
 recognition respectively.
 
-##Dependencies
+## Walkthrough
 
-#r libraries: library(keras) #keras library must be loaded, then
-installed with command install_keras library(tensorflow) #tensorflow
-library must be loaded, then installed with command install_tensorflow
-library(platypus) library(plyr) library(tidyverse) library(abind)
-library(dplyr) library(tidyr) library(pryr) library(purrr)
-library(magrittr) library(data.table) library(av) library(plotKML)
+videogeolocationr requires the tensorflow and keras libraries to be
+installed.
 
-#library documentation <https://github.com/maju116/platypus>
-<https://cran.r-project.org/web/packages/keras/index.html>
-<https://cran.r-project.org/web/packages/tensorflow/index.html>
+```{r}
+install.packages("keras", "tensorflow")
+keras::install_keras()
+tensorflow::install_tensorflow()
+```
 
-#Other ExifTool -\> <https://exiftool.org/> #Exiftool currently must be
-installed to machine manually and operated via shell to produce .gpx
-file yolov3.weights -\>
-<https://pjreddie.com/media/files/yolov3.weights> #incorporating these
-to package at later time? too large for github, must be automatically
-downloaded from source gpx.fmt -\>
+If a .gpx file for the target video is not available, one may be
+extracted from a geotagged .mp4 file using Exiftool by Peter Harvey:
+
+<https://exiftool.org/>
+
+Exiftool requires a gpx format file, which is available here:
+
 <https://github.com/exiftool/exiftool/blob/master/fmt_files/gpx.fmt>
-#file is in data-raw
+
+Modify the following script to point to your target video file and
+gpx.fmt file, and ensure the output .gpx file has the same name as the
+target video file, then run via command line.
+
+    C:\exiftool.exe -p "C:\gpx.fmt" -ee "C:\example.MP4" > "C:\example.gpx"
+
+A pre-trained YOLOv3 weights file may be downloaded here, and must also
+be placed without renaming in the same directory as the target video:
+
+<https://pjreddie.com/media/files/yolov3.weights>
